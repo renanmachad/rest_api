@@ -4,12 +4,15 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/mux"
 	"github.com/renanmachad/rest_api.git/controllers"
 )
 
 func HandleRequest() {
-	http.HandleFunc("/", controllers.Home)
-	http.HandleFunc("/api/person", controllers.AllPersons)
+	r := mux.NewRouter()
+	r.HandleFunc("/", controllers.Home)
+	r.HandleFunc("/api/person", controllers.AllPersons).Methods("Get")
+	r.HandleFunc("/api/person/{id}", controllers.Person).Methods("Get")
 
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	log.Fatal(http.ListenAndServe(":8000", r))
 }

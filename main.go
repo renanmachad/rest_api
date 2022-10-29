@@ -11,14 +11,16 @@ func main() {
 
 	models.Personalities = []models.Personality{
 		{
+			Id:      1,
 			Name:    "Renan",
 			History: "BLALBLALBLALBLLALA",
 		},
 		{
+			Id:      2,
 			Name:    "Renan",
 			History: "BLALBLALBLALBLLALA",
 		},
 	}
-	fmt.Println("Fucking hello world")
+	fmt.Println("Starting server ...")
 	routes.HandleRequest()
 }
